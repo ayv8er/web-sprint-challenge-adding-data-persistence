@@ -1,13 +1,5 @@
-const db = require("../data/dbConfig");
-
 const checkProjectBody = (req, res, next) => {
-  const { project_name, project_completed } = req.body;
-
-  //   if (project_completed === 0) {
-  //     project_completed = false;
-  //   } else {
-  //     project_completed = true;
-  //   }
+  const { project_name } = req.body;
 
   if (
     project_name === undefined ||
