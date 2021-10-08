@@ -39,7 +39,24 @@ const checkResourceBody = (req, res, next) => {
   }
 };
 
+const checkTaskBody = (req, res, next) => {
+  const { task_description } = req.body;
+  if (
+    task_description === undefined ||
+    typeof task_description !== "string" ||
+    task_description.trim() === ""
+  ) {
+    next({
+      status: 400,
+      message: "task name must be included in text format",
+    });
+  } else {
+    next();
+  }
+};
+
 module.exports = {
   checkProjectBody,
   checkResourceBody,
+  checkTaskBody,
 };
